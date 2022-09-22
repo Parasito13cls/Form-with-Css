@@ -6,6 +6,7 @@ export default function App() {
     fullName: '',
     email: '',
     address: '',
+    isCool: false,
   });
 
   console.log(formData);
@@ -20,9 +21,17 @@ export default function App() {
     });
   }
 
+  let message;
+  if (formData.isCool) {
+    message = <p>I am Cool</p>;
+  } else {
+    message = <p>I Suck Ass</p>;
+  }
+
   return (
     <div className="App">
-      <div className="form">
+      <div className="data">
+        <h3>Enter Info: See the</h3>
         <form>
           <input
             type="text"
@@ -45,6 +54,15 @@ export default function App() {
             name="address"
             value={formData.address}
           />
+          <br />
+          <label htmlFor="">Are you Cool?</label>
+          <input
+            type="checkbox"
+            value={formData.isCool}
+            name="isCool"
+            onChange={handleChange}
+            id="isCool"
+          />
         </form>
       </div>
 
@@ -52,6 +70,7 @@ export default function App() {
         <h3>{formData.fullName}</h3>
         <h3>{formData.email}</h3>
         <p>{formData.address}</p>
+        <p>{message}</p>
       </div>
     </div>
   );
