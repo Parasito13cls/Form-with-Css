@@ -9,8 +9,6 @@ export default function App() {
     isCool: false,
   });
 
-  console.log(formData);
-
   function handleChange(event) {
     const { name, type, value, checked } = event.target;
     setFormData((prevFormData) => {
@@ -28,11 +26,16 @@ export default function App() {
     message = <p>I Suck Ass</p>;
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(formData);
+  }
+
   return (
     <div className="App">
       <div className="data">
-        <h3>Enter Info: See the</h3>
-        <form>
+        <h3>Enter Info: See the Magic</h3>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Full Name"
@@ -63,6 +66,9 @@ export default function App() {
             onChange={handleChange}
             id="isCool"
           />
+          <br />
+          <br />
+          <button>Submit</button>
         </form>
       </div>
 
